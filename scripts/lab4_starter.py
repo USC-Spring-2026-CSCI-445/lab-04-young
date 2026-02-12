@@ -5,6 +5,7 @@ from time import sleep, time
 import rospy
 from geometry_msgs.msg import Twist
 from turtlebot3_msgs.msg import SensorState
+import math
 
 
 # P controller class
@@ -97,7 +98,7 @@ class RobotController:
         raw = state.cliff
         ######### Your code starts here #########
         # conversion from raw sensor values to distance. Use equation from Lab 2
-        distance = 36229*raw**(-1.268)
+        distance = 9.262307*math.exp(-0.01240355*raw)+0.0921
         ######### Your code ends here #########
         # print(f"raw: {raw}\tdistance: {distance}")
         self.ir_distance = distance
